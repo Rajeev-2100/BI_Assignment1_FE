@@ -41,7 +41,7 @@ const ListingPage = () => {
         <hr />
 
         <article>
-          <div className="container-fluid container d-flex justify-content-between mb-4">
+          <div className="container-fluid container d-flex flex-wrap justify-content-between mb-4">
             <h2>Meetup Events</h2>
 
             <select

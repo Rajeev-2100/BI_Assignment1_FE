@@ -59,7 +59,7 @@ const DetailPage = () => {
 
       <hr />
 
-      <article className="container d-flex justify-content-between">
+      <article className="container d-flex justify-content-between flex-wrap">
         <div>
           <h2>{meetup?.eventTitle}</h2>
           <br />
@@ -69,7 +69,7 @@ const DetailPage = () => {
             <b>{meetup?.hostedBy}</b>
           </p>
 
-          <img src={meetup?.imageUrl} alt="" width={100} />
+          <img src={meetup?.imageUrl} alt="" width="540" />
 
           <h5>Details</h5>
           <p>{meetup?.eventDetail}</p>
