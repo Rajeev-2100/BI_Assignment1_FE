@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import useFetch from "../useFetch.jsx";
 
@@ -12,11 +12,19 @@ const ListingPage = () => {
 
   console.log("data", data);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <p className="fs-4">Loading...</p>
+      </div>
+    );
 
   const filteredData = data?.filter((meetup) => {
-    const matchesTitle = meetup?.eventTitle?.toLowerCase().includes(titleName.toLowerCase());
-    const matchesType = meetupType === "" || meetup?.eventType[0][0] === meetupType;
+    const matchesTitle = meetup?.eventTitle
+      ?.toLowerCase()
+      .includes(titleName.toLowerCase());
+    const matchesType =
+      meetupType === "" || meetup?.eventType[0][0] === meetupType;
     return matchesTitle && matchesType;
   });
   // console.log(filteredData)
@@ -25,7 +33,9 @@ const ListingPage = () => {
     <>
       <nav className="navbar bg-body-tertiary">
         <div className="container container-fluid">
-          <a className="navbar-brand">meetUp</a>
+          <a className="navbar-brand" href="/">
+            meetUp
+          </a>
 
           <input
             className="me-2"
@@ -55,27 +65,35 @@ const ListingPage = () => {
             </select>
           </div>
         </article>
- 
+
         <article className="container d-flex justify-content-between flex-wrap gap-2">
           {filteredData?.length === 0 && <h4>No events found</h4>}
+
           {filteredData?.map((meetup) => (
-            <div key={meetup._id} className="col-lg-3 mb-4">
-              <div className="h-100 card">
+            <div
+              key={meetup._id}
+              className="col-12 col-sm-6 col-lg-3 mb-4 d-flex justify-content-center"
+            >
+              <div className="h-100 card w-100">
                 <Link to={`/meetup/Id/${meetup._id}`}>
-                <img
-                  src={meetup.imageUrl}
-                  className="card-img-top"
-                  height="170"
-                  style={{ objectFit: "cover" }}
-                  alt="event"
-                  />
+                  <div className="rounded d-flex justify-content-center flex-column justify-content-lg-start">
+                    <button className="rounded mx-auto">
+                      {meetup.eventType}
+                    </button>
+
+                    <img
+                      src={meetup.imageUrl}
+                      className="card-img-top w-100"
+                      height="170"
+                      style={{ objectFit: "cover" }}
+                      alt="event"
+                    />
+                  </div>
                 </Link>
 
-                <div className="card-body">
+                <div className="card-body text-center text-lg-start">
                   <p className="text-muted mb-1">{meetup.eventDate}</p>
-                  <h5 className="card-title fw-bold">
-                    {meetup.eventTitle}
-                  </h5>
+                  <h5 className="card-title fw-bold">{meetup.eventTitle}</h5>
                 </div>
 
                 <div className="card-footer bg-white border-0">
