@@ -11,7 +11,23 @@ const DetailPage = () => {
     `https://meetup-eta-indol.vercel.app/meetup/Id/${meetupId}`
   );
 
-  console.log(data);
+  
+
+  const formattedDate = data?.data?.eventDate
+  ? new Date(data.data.eventDate).toLocaleString("en-IN", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+      timeZone: "Asia/Kolkata",
+    })
+  : "";
+
+
+  console.log(typeof formatted)
 
   const meetup = data?.data;
 
@@ -24,7 +40,7 @@ const DetailPage = () => {
       <>
         <nav className="navbar bg-body-tertiary">
           <div className="container container-fluid">
-            <a className="navbar-brand">meetUp</a>
+            <a className="navbar-brand" href="/">meetUp</a>
 
             <input
               className="me-2"
@@ -91,9 +107,9 @@ const DetailPage = () => {
           </button>
         </div>
         <div>
-          <div class="card p-2">
-            <div class="card-body">
-              <p>{meetup?.eventDate}</p>
+          <div className="card p-2">
+            <div className="card-body">
+              <p>{formattedDate}</p>
               <p>{meetup?.eventLocation}</p>
               <p>$ {meetup?.eventPrice}</p>
             </div>
