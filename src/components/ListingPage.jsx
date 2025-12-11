@@ -90,15 +90,14 @@ const ListingPage = () => {
               <div className="h-100 card w-100">
                 <Link to={`/meetup/Id/${meetup._id}`}>
                   <div className="rounded d-flex justify-content-center flex-column justify-content-lg-start">
-                    <button className="rounded mx-auto">
+                    <button className="rounded position-absolute start-0 top-0">
                       {meetup.eventType}
                     </button>
 
                     <img
                       src={meetup.imageUrl}
-                      className="card-img-top w-100"
+                      className="card-img-top w-100 img-fluid"
                       height="170"
-                      style={{ objectFit: "cover" }}
                       alt="event"
                     />
                   </div>
