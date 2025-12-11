@@ -10,7 +10,21 @@ const ListingPage = () => {
     "https://meetup-eta-indol.vercel.app/meetup"
   );
 
-  console.log("data", data);
+  const formatted = data?.map((event) => ({
+    ...event,
+    eventDate:
+      new Date(event.eventDate).toLocaleString("en-IN", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "Asia/Kolkata",
+      }),
+  }));
+
 
   if (loading)
     return (
@@ -19,15 +33,14 @@ const ListingPage = () => {
       </div>
     );
 
-  const filteredData = data?.filter((meetup) => {
+  const filteredData = formatted?.filter((meetup) => {
     const matchesTitle = meetup?.eventTitle
       ?.toLowerCase()
       .includes(titleName.toLowerCase());
     const matchesType =
       meetupType === "" || meetup?.eventType[0][0] === meetupType;
-    return matchesTitle && matchesType;
+    return matchesTitle && matchesType 
   });
-  // console.log(filteredData)
 
   return (
     <>
