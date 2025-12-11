@@ -69,7 +69,7 @@ const DetailPage = () => {
             <b>{meetup?.hostedBy}</b>
           </p>
 
-          <img src={meetup?.imageUrl} alt="" width="540" />
+          <img src={meetup?.imageUrl} className="img-fluid" alt="" width="540" />
 
           <h5>Details</h5>
           <p>{meetup?.eventDetail}</p>
@@ -102,7 +102,7 @@ const DetailPage = () => {
           <h3>Speakers: ({meetup?.noOfSpeaker})</h3>
 
           <div className="card p-3">
-            <img src={meetup?.imageUrl} alt="" width="400" />
+            <img src={meetup?.imageUrl} className="img-fluid" alt="" width="400" />
             <h5 className="fw-bold">{meetup?.speakerPerson}</h5>
             <p className="text-muted">{meetup?.speakerRole.join(', ')}</p>
                 </div>
