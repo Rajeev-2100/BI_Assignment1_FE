@@ -61,7 +61,7 @@ const DetailPage = () => {
     <>
       <nav className="navbar bg-body-tertiary">
         <div className="container container-fluid">
-          <a className="navbar-brand">meetUp</a>
+          <a className="navbar-brand" href="/">meetUp</a>
 
           <input
             className="me-2"
