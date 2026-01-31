@@ -111,9 +111,9 @@ const ListingPage = () => {
                 </div>
 
                 <div className="card-footer bg-white border-0">
-                  <button className="btn btn-primary w-100">
+                  <Link to={`/meetup/Id/${meetup._id}`} className="btn btn-primary w-100">
                     View Details
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
