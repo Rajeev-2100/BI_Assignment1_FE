@@ -6,7 +6,7 @@ const ListingPage = () => {
   const [titleName, setTitleName] = useState("");
   const [meetupType, setMeetupType] = useState("");
 
-  const { data, loading } = useFetch(
+  const { data, loading, error } = useFetch(
     "https://meetup-eta-indol.vercel.app/meetup"
   );
 
@@ -41,6 +41,8 @@ const ListingPage = () => {
       meetupType === "" || meetup?.eventType[0][0] === meetupType;
     return matchesTitle && matchesType 
   });
+
+  if(error) <p>{error.message}</p>
 
   return (
     <>
