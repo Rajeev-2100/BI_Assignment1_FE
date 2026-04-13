@@ -123,7 +123,7 @@ const DetailPage = () => {
         </div>
       </article>
       <footer className="bg-body-tertiary">
-        <p className="container py-4 mb-0">@ Lorem ipsum dolor sit amet.</p>
+        <p className="container py-4 mb-0 text-center">@ Lorem ipsum dolor sit amet.</p>
       </footer>
     </>
   );
