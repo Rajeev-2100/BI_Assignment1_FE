@@ -7,10 +7,12 @@ const ListingPage = () => {
   const [meetupType, setMeetupType] = useState("");
 
   const { data, loading, error } = useFetch(
-    "https://meetup-eta-indol.vercel.app/meetup"
+    "https://meetup-backend-one.vercel.app/meetup"
   );
 
-  const formatted = data?.map((event) => ({
+  console.log(data)
+
+  const formatted = data?.data?.map((event) => ({
     ...event,
     eventDate:
       new Date(event.eventDate).toLocaleString("en-IN", {
@@ -34,11 +36,11 @@ const ListingPage = () => {
     );
 
   const filteredData = formatted?.filter((meetup) => {
-    const matchesTitle = meetup?.eventTitle
+    const matchesTitle = meetup?.meetupTitle
       ?.toLowerCase()
       .includes(titleName.toLowerCase());
     const matchesType =
-      meetupType === "" || meetup?.eventType[0][0] === meetupType;
+      meetupType === "" || meetup?.eventType[0] == meetupType;
     return matchesTitle && matchesType 
   });
 
@@ -75,13 +77,13 @@ const ListingPage = () => {
               onChange={(e) => setMeetupType(e.target.value)}
             >
               <option value="">All</option>
-              <option value="Online Event">Online Event</option>
-              <option value="Offline Event">Offline Event</option>
+              <option value="Online">Online Event</option>
+              <option value="Offline">Offline Event</option>
             </select>
           </div>
         </article>
 
-        <article className="container d-flex justify-content-between flex-wrap gap-2">
+        <article className="container d-flex justify-content-between flex-wrap gap-2 mb-5">
           {filteredData?.length === 0 && <h4>No events found</h4>}
 
           {filteredData?.map((meetup) => (
@@ -97,7 +99,7 @@ const ListingPage = () => {
                     </button>
 
                     <img
-                      src={meetup.imageUrl}
+                      src={meetup.meetupImage}
                       className="card-img-top w-100 img-fluid"
                       height="170"
                       alt="event"
@@ -107,7 +109,7 @@ const ListingPage = () => {
 
                 <div className="card-body text-center text-lg-start">
                   <p className="text-muted mb-1">{meetup.eventDate}</p>
-                  <h5 className="card-title fw-bold">{meetup.eventTitle}</h5>
+                  <h5 className="card-title fw-bold">{meetup.meetupTitle}</h5>
                 </div>
 
                 <div className="card-footer bg-white border-0">
@@ -120,6 +122,9 @@ const ListingPage = () => {
           ))}
         </article>
       </main>
+      <footer className="bg-body-tertiary">
+        <p className="container py-4 mb-0">@ Lorem ipsum dolor sit amet.</p>
+      </footer>
     </>
   );
 };

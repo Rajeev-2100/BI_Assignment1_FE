@@ -8,10 +8,8 @@ const DetailPage = () => {
   const { meetupId } = useParams();
 
   const { data, loading } = useFetch(
-    `https://meetup-eta-indol.vercel.app/meetup/Id/${meetupId}`
+    `https://meetup-backend-one.vercel.app/meetup/Id/${meetupId}`
   );
-
-  
 
   const formattedDate = data?.data?.eventDate
   ? new Date(data.data.eventDate).toLocaleString("en-IN", {
@@ -27,7 +25,7 @@ const DetailPage = () => {
   : "";
 
 
-  console.log(typeof formatted)
+  // console.log(typeof formatted)
 
   const meetup = data?.data;
 
@@ -75,9 +73,9 @@ const DetailPage = () => {
 
       <hr />
 
-      <article className="container d-flex justify-content-between flex-wrap">
+      <article className="container d-flex justify-content-between flex-wrap mb-5">
         <div>
-          <h2>{meetup?.eventTitle}</h2>
+          <h2>{meetup?.meetupTitle}</h2>
           <br />
 
           <p>
@@ -85,10 +83,10 @@ const DetailPage = () => {
             <b>{meetup?.hostedBy}</b>
           </p>
 
-          <img src={meetup?.imageUrl} className="img-fluid" alt="" width="540" />
+          <img src={meetup?.meetupImage} className="img-fluid" alt="" width="540" />
 
           <h5>Details</h5>
-          <p>{meetup?.eventDetail}</p>
+          <p>{meetup?.meetupDetails}</p>
 
           <h5>Additional Information: </h5>
 
@@ -115,15 +113,18 @@ const DetailPage = () => {
             </div>
           </div>
           <br />
-          <h3>Speakers: ({meetup?.noOfSpeaker})</h3>
+          <h3>Speakers: (1)</h3>
 
           <div className="card p-3">
-            <img src={meetup?.imageUrl} className="img-fluid" alt="" width="400" />
+            <img src={meetup?.meetupImage} className="img-fluid" alt="" width="400" />
             <h5 className="fw-bold">{meetup?.speakerPerson}</h5>
             <p className="text-muted">{meetup?.speakerRole.join(', ')}</p>
                 </div>
         </div>
       </article>
+      <footer className="bg-body-tertiary">
+        <p className="container py-4 mb-0">@ Lorem ipsum dolor sit amet.</p>
+      </footer>
     </>
   );
 };
