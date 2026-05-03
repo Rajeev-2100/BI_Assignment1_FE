@@ -7,7 +7,7 @@ const ListingPage = () => {
   const [meetupType, setMeetupType] = useState("");
 
   const { data, loading, error } = useFetch(
-    "https://meetup-backend-one.vercel.app/meetup"
+    "https://meetup-backend-gc9i.vercel.app/meetup"
   );
 
   console.log(data)

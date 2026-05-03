@@ -8,7 +8,7 @@ const DetailPage = () => {
   const { meetupId } = useParams();
 
   const { data, loading } = useFetch(
-    `https://meetup-backend-one.vercel.app/meetup/Id/${meetupId}`
+    `https://meetup-backend-gc9i.vercel.app/meetup/Id/${meetupId}`
   );
 
   const formattedDate = data?.data?.eventDate
