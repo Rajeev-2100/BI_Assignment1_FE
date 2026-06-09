@@ -1,51 +1,221 @@
-<< HEAD
-# BI_Assignment1_FE
-A responsive Meetup web app frontend built with React that allows users to browse events, filter by type, search by title, and view detailed event information.
+# 🏨 Hotel Management API
 
-# Meetup App – Frontend
+A RESTful API built using **Node.js**, **Express.js**, **MongoDB Atlas**, and **Mongoose** for managing hotel data. This API allows users to create, retrieve, update, and delete hotel records stored in a MongoDB database.
 
-This is the frontend of a Meetup web application built using React and Bootstrap. The application allows users to explore various meetup events, filter events by type (online/offline), search events by title, and view complete event details on a dedicated detail page.
-
-The project focuses on clean UI, component-based architecture, and smooth navigation using React Router.
+---
 
 ## 🚀 Features
 
-- Browse all meetup events  
-- Search events by title  
-- Filter events by type (Online / Offline)  
-- View detailed event information  
-- Dynamic routing using React Router  
-- Responsive UI using Bootstrap  
-- API integration using custom `useFetch` hook  
+* Add a new hotel
+* Get all hotels
+* Get hotel details by name
+* Get hotels by category
+* Get hotels by rating
+* Get hotel details by phone number
+* Update hotel details by ID
+* Delete hotel by ID
+* MongoDB Atlas integration
+* CORS enabled for frontend applications
+
+---
 
 ## 🛠️ Tech Stack
 
-- React  
-- React Router DOM  
-- Bootstrap  
-- JavaScript (ES6+)  
-- REST API Integration  
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* dotenv
+* cors
 
-## 📦 Setup & Installation
+---
+
+## 📂 Project Structure
+
+```bash
+├── db
+│   └── db.connect.js
+├── models
+│   └── hotel.model.js
+├── .env
+├── index.js
+├── package.json
+├── package-lock.json
+├── vercel.json
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/Rajeev-2100/BI1.3_HW2_BE.git
+cd BI1.3_HW2_BE
+```
+
+### 2. Install Dependencies
 
 ```bash
 npm install
-npm start
-=======
-# React + Vite
+```
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 3. Configure Environment Variables
 
-Currently, two official plugins are available:
+Create a `.env` file in the root directory:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```env
+MONGO_URL=your_mongodb_connection_string
+```
 
-## React Compiler
+### 4. Run the Server
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+node index.js
+```
 
-## Expanding the ESLint configuration
+Server runs on:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
->>>>>>> 5b4b74b (chore: add the frontent of meetup app)
+```bash
+http://localhost:3000
+```
+
+---
+
+## 📖 Hotel Schema
+
+| Field                 | Type    |
+| --------------------- | ------- |
+| name                  | String  |
+| category              | Array   |
+| location              | Array   |
+| rating                | Number  |
+| reviews               | Array   |
+| website               | String  |
+| phoneNumber           | String  |
+| checkInTime           | String  |
+| checkOutTime          | String  |
+| amenities             | Array   |
+| priceRange            | String  |
+| reservationsNeeded    | Boolean |
+| isParkingAvailable    | Boolean |
+| isWifiAvailable       | Boolean |
+| isPoolAvailable       | Boolean |
+| isSpaAvailable        | Boolean |
+| isRestaurantAvailable | Boolean |
+| photos                | Array   |
+
+---
+
+## 📌 API Endpoints
+
+### Create Hotel
+
+**POST /hotels**
+
+Creates a new hotel record.
+
+### Get All Hotels
+
+**GET /hotels**
+
+Returns all hotels.
+
+### Get Hotel By Name
+
+**GET /hotels/:hotelName**
+
+Example:
+
+```http
+GET /hotels/Taj Palace
+```
+
+### Get Hotels By Category
+
+**GET /hotels/category/:hotelCategory**
+
+Example:
+
+```http
+GET /hotels/category/Luxury
+```
+
+### Get Hotels By Rating
+
+**GET /hotels/rating/:hotelRating**
+
+Example:
+
+```http
+GET /hotels/rating/5
+```
+
+### Get Hotel By Phone Number
+
+**GET /hotels/directory/:phoneNumber**
+
+Example:
+
+```http
+GET /hotels/directory/9876543210
+```
+
+### Update Hotel
+
+**PUT /hotels/:hotelId**
+
+Updates hotel details by ID.
+
+### Delete Hotel
+
+**DELETE /hotels/:hotelId**
+
+Deletes a hotel by ID.
+
+---
+
+## 🧪 Example Request
+
+```json
+{
+  "name": "Grand Palace Hotel",
+  "category": ["Luxury"],
+  "location": ["Mumbai"],
+  "rating": 4.8,
+  "phoneNumber": "9876543210"
+}
+```
+
+### Example Response
+
+```json
+{
+  "message": "Hotel created successfully",
+  "data": {
+    "name": "Grand Palace Hotel"
+  }
+}
+```
+
+---
+
+## 🔮 Future Improvements
+
+* Pagination
+* Sorting and filtering
+* Search by location
+* Authentication & Authorization
+* Input validation using Joi
+* Swagger API Documentation
+* Unit and Integration Testing
+
+---
+
+## 👨‍💻 Author
+
+**Rajeev Rawat**
+
+Aspiring Full Stack Developer passionate about building scalable backend applications with Node.js, Express.js, MongoDB, and JavaScript.
