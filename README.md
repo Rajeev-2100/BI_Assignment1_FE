@@ -77,7 +77,23 @@ npm run dev
 
 ```bash
 npm run build
+
 ```
+
+---
+
+
+📸 Application Screenshots
+
+Dashboard Overview
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/e2f69595-dc9a-41bd-bc97-f36f2e55cabf" />
+
+Meetup Detail Page 
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/50054b56-eb77-46f8-bc28-15c0c07111b6" />
+
+---
 
 ## 🔮 Future Improvements
 
