@@ -1,221 +1,89 @@
-# 🏨 Hotel Management API
+# MeetUp Event App 🎉
 
-A RESTful API built using **Node.js**, **Express.js**, **MongoDB Atlas**, and **Mongoose** for managing hotel data. This API allows users to create, retrieve, update, and delete hotel records stored in a MongoDB database.
-
----
-
-## 🚀 Features
-
-* Add a new hotel
-* Get all hotels
-* Get hotel details by name
-* Get hotels by category
-* Get hotels by rating
-* Get hotel details by phone number
-* Update hotel details by ID
-* Delete hotel by ID
-* MongoDB Atlas integration
-* CORS enabled for frontend applications
+A responsive React application for discovering and exploring meetup events. Users can browse available events, search by title, filter events by type, and view detailed information about individual meetups. The application fetches data from a REST API and presents a clean, user-friendly interface using Bootstrap.
 
 ---
 
-## 🛠️ Tech Stack
+## 🌐 Live Demo
 
-* Node.js
-* Express.js
-* MongoDB Atlas
-* Mongoose
-* dotenv
-* cors
+### Meetup App
+
+https://meetup-frontend-navy.vercel.app/
 
 ---
 
-## 📂 Project Structure
+## ✨ Features
+
+* Browse all meetup events with images and event information.
+* Search events dynamically by title.
+* Filter events by type (Online or Offline).
+* View complete event details on a dedicated page.
+* Display formatted event date and time.
+* Show event location, price, host information, and speaker details.
+* Display additional information such as dress code, age restrictions, and event tags.
+* Responsive design built with Bootstrap 5.
+* Custom `useFetch` hook for API data fetching.
+
+## 🛠 Tech Stack
+
+* React
+* React Router DOM
+* Bootstrap 5
+* JavaScript (ES6+)
+* Custom Hooks
+* REST API
+
+## 📁 Project Structure
 
 ```bash
-├── db
-│   └── db.connect.js
-├── models
-│   └── hotel.model.js
-├── .env
-├── index.js
-├── package.json
-├── package-lock.json
-├── vercel.json
-└── README.md
+src/
+├── components/
+│   ├── ListingPage.jsx
+│   └── DetailPage.jsx
+├── useFetch.jsx
+├── App.jsx
+└── main.jsx
 ```
 
----
+## 🚀 Routes
+
+| Route                  | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| `/`                    | Displays all meetup events                         |
+| `/meetup/Id/:meetupId` | Displays detailed information for a specific event |
+
+### Endpoints Used
+
+```bash
+GET /meetup
+GET /meetup/Id/:meetupId
+```
 
 ## ⚙️ Installation
 
-### 1. Clone Repository
-
-```bash
-git clone https://github.com/Rajeev-2100/BI1.3_HW2_BE.git
-cd BI1.3_HW2_BE
-```
-
-### 2. Install Dependencies
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Configure Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-MONGO_URL=your_mongodb_connection_string
-```
-
-### 4. Run the Server
+### Run Development Server
 
 ```bash
-node index.js
+npm run dev
 ```
 
-Server runs on:
+### Build for Production
 
 ```bash
-http://localhost:3000
+npm run build
 ```
-
----
-
-## 📖 Hotel Schema
-
-| Field                 | Type    |
-| --------------------- | ------- |
-| name                  | String  |
-| category              | Array   |
-| location              | Array   |
-| rating                | Number  |
-| reviews               | Array   |
-| website               | String  |
-| phoneNumber           | String  |
-| checkInTime           | String  |
-| checkOutTime          | String  |
-| amenities             | Array   |
-| priceRange            | String  |
-| reservationsNeeded    | Boolean |
-| isParkingAvailable    | Boolean |
-| isWifiAvailable       | Boolean |
-| isPoolAvailable       | Boolean |
-| isSpaAvailable        | Boolean |
-| isRestaurantAvailable | Boolean |
-| photos                | Array   |
-
----
-
-## 📌 API Endpoints
-
-### Create Hotel
-
-**POST /hotels**
-
-Creates a new hotel record.
-
-### Get All Hotels
-
-**GET /hotels**
-
-Returns all hotels.
-
-### Get Hotel By Name
-
-**GET /hotels/:hotelName**
-
-Example:
-
-```http
-GET /hotels/Taj Palace
-```
-
-### Get Hotels By Category
-
-**GET /hotels/category/:hotelCategory**
-
-Example:
-
-```http
-GET /hotels/category/Luxury
-```
-
-### Get Hotels By Rating
-
-**GET /hotels/rating/:hotelRating**
-
-Example:
-
-```http
-GET /hotels/rating/5
-```
-
-### Get Hotel By Phone Number
-
-**GET /hotels/directory/:phoneNumber**
-
-Example:
-
-```http
-GET /hotels/directory/9876543210
-```
-
-### Update Hotel
-
-**PUT /hotels/:hotelId**
-
-Updates hotel details by ID.
-
-### Delete Hotel
-
-**DELETE /hotels/:hotelId**
-
-Deletes a hotel by ID.
-
----
-
-## 🧪 Example Request
-
-```json
-{
-  "name": "Grand Palace Hotel",
-  "category": ["Luxury"],
-  "location": ["Mumbai"],
-  "rating": 4.8,
-  "phoneNumber": "9876543210"
-}
-```
-
-### Example Response
-
-```json
-{
-  "message": "Hotel created successfully",
-  "data": {
-    "name": "Grand Palace Hotel"
-  }
-}
-```
-
----
 
 ## 🔮 Future Improvements
 
-* Pagination
-* Sorting and filtering
-* Search by location
-* Authentication & Authorization
-* Input validation using Joi
-* Swagger API Documentation
-* Unit and Integration Testing
-
----
-
-## 👨‍💻 Author
-
-**Rajeev Rawat**
-
-Aspiring Full Stack Developer passionate about building scalable backend applications with Node.js, Express.js, MongoDB, and JavaScript.
+* Add event registration functionality.
+* Implement category and date filters.
+* Add pagination or infinite scrolling.
+* Include loading and error states across all pages.
+* Add user authentication and favorite events feature.
+* Improve search functionality with multiple criteria.
